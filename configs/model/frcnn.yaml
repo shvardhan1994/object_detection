@@ -1,0 +1,10 @@
+_target_: object_detection.models.frcnn_module.frcnn_module
+lr: 0.001
+weight_decay: 0.0005
+momentum: 0.9
+nms_thresh: 0.2
+iou_thresh: 0.7 # IOU thresh during inference
+
+net:
+  _target_: object_detection.models.components.frcnn.frcnn
+  num_classes: 2

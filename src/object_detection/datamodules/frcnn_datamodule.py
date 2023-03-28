@@ -1,13 +1,22 @@
+from distutils.command.config import config
 from typing import Optional, Tuple
-
-import torch
+import os
 from pytorch_lightning import LightningDataModule
-from torch.utils.data import ConcatDataset, DataLoader, Dataset, random_split
-from torchvision.datasets import MNIST
+from torch.utils.data import DataLoader
 from torchvision.transforms import transforms
+from glob import glob
+import pathlib
+from object_detection.datamodules import frcnn_dataset
+import numpy as np
+import re
+import torchio as tio
+import pandas as pd
+import albumentations as A
+from object_detection.utils import utils_frcnn
 
 
-class MNISTDataModule(LightningDataModule):
+
+class frcnn_datamodule(LightningDataModule):
     """
     Example of LightningDataModule for MNIST dataset.
 
@@ -27,51 +36,56 @@ class MNISTDataModule(LightningDataModule):
 
     def __init__(
         self,
-        data_dir: str = "data/",
-        train_val_test_split: Tuple[int, int, int] = (55_000, 5_000, 10_000),
-        batch_size: int = 64,
+        train_data_dir: str = "data/train",
+        train_labels_file: str = 'data/train_labels.csv',
+        test_data_dir: str = "data/test",
+        test_labels_file: str = 'data/test_labels.csv',
+        batch_size: int = 32,
         num_workers: int = 0,
         pin_memory: bool = False,
+        aug_flag: str = 'N',
+        
     ):
         super().__init__()
 
         # this line allows to access init params with 'self.hparams' attribute
         self.save_hyperparameters(logger=False)
 
-        # data transformations
-        self.transforms = transforms.Compose(
-            [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
-        )
+        self.train_input = sorted(glob(train_data_dir+"/*",recursive=True))
+        self.train_annot_df = pd.read_csv(train_labels_file, delimiter=';')
+        self.test_input = sorted(glob(test_data_dir+"/*",recursive=True))
+        self.test_annot_df = pd.read_csv(test_labels_file, delimiter=',')
+        self.aug_flag = aug_flag 
 
-        self.data_train: Optional[Dataset] = None
-        self.data_val: Optional[Dataset] = None
-        self.data_test: Optional[Dataset] = None
+        self.train_annot_df['newpath'] = [p.split('/')[-1] for p in self.train_annot_df.Path]
+        self.test_annot_df['newpath'] = [p.split('/')[-1] for p in self.test_annot_df.Path]
 
+
+       
     @property
     def num_classes(self) -> int:
-        return 10
+        return 2
 
-    def prepare_data(self):
-        """Download data if needed. This method is called only from a single GPU.
-        Do not use it to assign state (self.x = y)."""
-        MNIST(self.hparams.data_dir, train=True, download=True)
-        MNIST(self.hparams.data_dir, train=False, download=True)
 
     def setup(self, stage: Optional[str] = None):
         """Load data. Set variables: `self.data_train`, `self.data_val`, `self.data_test`.
         This method is called by lightning twice for `trainer.fit()` and `trainer.test()`, so be careful if you do a random split!
         The `stage` can be used to differentiate whether it's called before trainer.fit()` or `trainer.test()`."""
 
-        # load datasets only if they're not loaded already
-        if not self.data_train and not self.data_val and not self.data_test:
-            trainset = MNIST(self.hparams.data_dir, train=True, transform=self.transforms)
-            testset = MNIST(self.hparams.data_dir, train=False, transform=self.transforms)
-            dataset = ConcatDataset(datasets=[trainset, testset])
-            self.data_train, self.data_val, self.data_test = random_split(
-                dataset=dataset,
-                lengths=self.hparams.train_val_test_split,
-                generator=torch.Generator().manual_seed(42),
-            )
+        self.trans = A.Compose([
+                            A.HorizontalFlip(0.5),
+                            A.VerticalFlip(0.5),
+                            A.Rotate(5),
+                            # A.Affine(scale = (1.1,1.1),translate_percent = (0.1,0.1), shear=(3,3))
+                        ], bbox_params={'format': 'pascal_voc', 'label_fields': ['labels']})
+
+        self.data_train = frcnn_dataset.CustomDataset(self.train_input,self.train_annot_df)
+        self.data_test = frcnn_dataset.CustomDataset(self.test_input,self.test_annot_df)
+        self.data_val = frcnn_dataset.CustomDataset(self.test_input,self.test_annot_df)
+
+        print('Number of training images and test images')    
+        print(len(self.data_train),len(self.data_test))
+        print('Dimension of the image',self.data_train[0][0].shape )
 
     def train_dataloader(self):
         return DataLoader(
@@ -80,7 +94,8 @@ class MNISTDataModule(LightningDataModule):
             num_workers=self.hparams.num_workers,
             pin_memory=self.hparams.pin_memory,
             shuffle=True,
-        )
+            collate_fn=lambda x:list(zip(*x)))
+
 
     def val_dataloader(self):
         return DataLoader(
@@ -89,7 +104,7 @@ class MNISTDataModule(LightningDataModule):
             num_workers=self.hparams.num_workers,
             pin_memory=self.hparams.pin_memory,
             shuffle=False,
-        )
+            collate_fn=lambda x:list(zip(*x)))
 
     def test_dataloader(self):
         return DataLoader(
@@ -98,4 +113,5 @@ class MNISTDataModule(LightningDataModule):
             num_workers=self.hparams.num_workers,
             pin_memory=self.hparams.pin_memory,
             shuffle=False,
-        )
+            collate_fn=lambda x:list(zip(*x)))
+

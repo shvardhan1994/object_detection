@@ -1,0 +1,13 @@
+_target_: object_detection.datamodules.frcnn_datamodule.frcnn_datamodule
+
+train_data_dir: ${data_dir}/train # data_dir is specified in config.yaml
+test_data_dir: ${data_dir}/test # data_dir is specified in config.yaml
+
+train_labels_file: ${data_dir}/train_labels.csv 
+test_labels_file: ${data_dir}/test_labels.csv 
+
+batch_size: 16
+num_workers: 0
+pin_memory: False
+#train_full_flag: 'Y'
+aug_flag: 'N'
