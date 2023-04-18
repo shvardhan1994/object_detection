@@ -30,6 +30,9 @@ class frcnn_module(LightningModule):
         self.gt_coll = []
         self.nms_thresh = nms_thresh
         self.iou_thresh = iou_thresh
+        self.training_step_outputs = []
+        self.validation_step_outputs = []
+        self.test_step_outputs = []
         
  
     def forward(self, x: torch.Tensor):
@@ -51,16 +54,17 @@ class frcnn_module(LightningModule):
     def training_step(self, batch: Any, batch_idx: int):
         self.net = self.net.train()
         loss, loss_box_reg, loss_objectness, loss_rpn_box_reg, loss_classifier = self.step(batch)
+        self.training_step_outputs.append({"loss": loss, "loss_box_reg": loss_box_reg, "loss_objectness": loss_objectness, "loss_rpn_box_reg": loss_rpn_box_reg, "loss_classifier": loss_classifier})
         return {"loss": loss, "loss_box_reg": loss_box_reg, "loss_objectness": loss_objectness, "loss_rpn_box_reg": loss_rpn_box_reg, "loss_classifier": loss_classifier}
         
    
-    def training_epoch_end(self, outputs: List[Any]):
+    def on_training_epoch_end(self):
 
-        loss = sum(output['loss'] for output in outputs) / len(outputs)
-        loss_box = sum(output['loss_box_reg'] for output in outputs) / len(outputs)
-        loss_objectness = sum(output['loss_objectness'] for output in outputs) / len(outputs)
-        loss_rpn_box_reg = sum(output['loss_rpn_box_reg'] for output in outputs) / len(outputs)
-        loss_classifier = sum(output['loss_classifier'] for output in outputs) / len(outputs)
+        loss = sum(output['loss'] for output in self.training_step_outputs) / len(self.training_step_outputs)
+        loss_box = sum(output['loss_box_reg'] for output in self.training_step_outputs) / len(self.training_step_outputs)
+        loss_objectness = sum(output['loss_objectness'] for output in self.training_step_outputs) / len(self.training_step_outputs)
+        loss_rpn_box_reg = sum(output['loss_rpn_box_reg'] for output in self.training_step_outputs) / len(self.training_step_outputs)
+        loss_classifier = sum(output['loss_classifier'] for output in self.training_step_outputs) / len(self.training_step_outputs)
 
         print(f'At Training epoch {self.current_epoch}')
         print(f"'Total loss = ' {loss} 'Loss box = ' {loss_box} 'Loss objectness = ' {loss_objectness} 'Loss rpn box reg = ' {loss_rpn_box_reg} 'Loss classifier = ' {loss_classifier} ")
@@ -78,17 +82,18 @@ class frcnn_module(LightningModule):
         with torch.no_grad():
             self.net = self.net.train()
             loss, loss_box_reg, loss_objectness, loss_rpn_box_reg, loss_classifier = self.step(batch)
- 
+        self.validation_step_outputs.append({"loss": loss, "loss_box_reg": loss_box_reg, "loss_objectness": loss_objectness, "loss_rpn_box_reg": loss_rpn_box_reg, "loss_classifier": loss_classifier})
+
         return {"loss": loss, "loss_box_reg": loss_box_reg, "loss_objectness": loss_objectness, "loss_rpn_box_reg": loss_rpn_box_reg,"loss_classifier": loss_classifier}
         
 
-    def validation_epoch_end(self, outputs: List[Any]):
+    def on_validation_epoch_end(self):
         
-        loss = sum(output['loss'] for output in outputs) / len(outputs)
-        loss_box = sum(output['loss_box_reg'] for output in outputs) / len(outputs)
-        loss_objectness = sum(output['loss_objectness'] for output in outputs) / len(outputs)
-        loss_rpn_box_reg = sum(output['loss_rpn_box_reg'] for output in outputs) / len(outputs)
-        loss_classifier = sum(output['loss_classifier'] for output in outputs) / len(outputs)
+        loss = sum(output['loss'] for output in self.validation_step_outputs) / len(self.validation_step_outputs)
+        loss_box = sum(output['loss_box_reg'] for output in self.validation_step_outputs) / len(self.validation_step_outputs)
+        loss_objectness = sum(output['loss_objectness'] for output in self.validation_step_outputs) / len(self.validation_step_outputs)
+        loss_rpn_box_reg = sum(output['loss_rpn_box_reg'] for output in self.validation_step_outputs) / len(self.validation_step_outputs)
+        loss_classifier = sum(output['loss_classifier'] for output in self.validation_step_outputs) / len(self.validation_step_outputs)
 
         print(f'At validation epoch {self.current_epoch}')
         print(f"'Total loss = ' {loss} 'Loss box = ' {loss_box} 'Loss objectness = ' {loss_objectness} 'Loss rpn box reg = ' {loss_rpn_box_reg} 'Loss classifier = ' {loss_classifier} ")
@@ -111,17 +116,18 @@ class frcnn_module(LightningModule):
         nms_preds = []
         for i in range(len(preds)):
             nms_preds.append(utils_frcnn.apply_nms(preds[i], iou_thresh=self.nms_thresh))
+        self.test_step_outputs.append({"targets": targets, "preds": nms_preds})
 
         return {"targets": targets, "preds": nms_preds}
    
        
-    def test_epoch_end(self, outputs: List[Any]):
+    def on_test_epoch_end(self):
         pred_coll = []
         gt_coll = []
         score_coll = []
-        for i in range(len(outputs)):
-            pred_dict_step = outputs[i]["preds"]
-            target_dict_step = outputs[i]["targets"]
+        for i in range(len(self.test_step_outputs)):
+            pred_dict_step = self.test_step_outputs[i]["preds"]
+            target_dict_step = self.test_step_outputs[i]["targets"]
             for j in range(len(pred_dict_step)):
                 predboxes = pred_dict_step[j]["boxes"]
                 predscores = pred_dict_step[j]["scores"]

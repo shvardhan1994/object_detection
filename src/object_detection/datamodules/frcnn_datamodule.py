@@ -79,9 +79,9 @@ class frcnn_datamodule(LightningDataModule):
                             # A.Affine(scale = (1.1,1.1),translate_percent = (0.1,0.1), shear=(3,3))
                         ], bbox_params={'format': 'pascal_voc', 'label_fields': ['labels']})
 
-        self.data_train = frcnn_dataset.CustomDataset(self.train_input,self.train_annot_df)
-        self.data_test = frcnn_dataset.CustomDataset(self.test_input,self.test_annot_df)
-        self.data_val = frcnn_dataset.CustomDataset(self.test_input,self.test_annot_df)
+        self.data_train = frcnn_dataset.CustomDataset(self.train_input[:100],self.train_annot_df)
+        self.data_test = frcnn_dataset.CustomDataset(self.test_input[:10],self.test_annot_df)
+        self.data_val = frcnn_dataset.CustomDataset(self.test_input[:10],self.test_annot_df)
 
         print('Number of training images and test images')    
         print(len(self.data_train),len(self.data_test))
