@@ -6,7 +6,7 @@ defaults:
   - datamodule: frcnn.yaml
   - model: frcnn.yaml
   - callbacks: default.yaml
-  - logger: mlflow.yaml # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
+  - logger: tensorboard.yaml # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
   - trainer: default.yaml
   - log_dir: default.yaml
 
@@ -35,7 +35,7 @@ original_work_dir: ${hydra:runtime.cwd}
 
 # path to folder with data
 
-data_dir: /Users/subramanian/GithubProjects/Object_Detection/data
+data_dir: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData
 
 
 # pretty print config at the start of the run using Rich library

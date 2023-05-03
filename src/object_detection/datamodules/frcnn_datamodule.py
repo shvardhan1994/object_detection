@@ -9,7 +9,6 @@ import pathlib
 from object_detection.datamodules import frcnn_dataset
 import numpy as np
 import re
-import torchio as tio
 import pandas as pd
 import albumentations as A
 from object_detection.utils import utils_frcnn
@@ -59,6 +58,23 @@ class frcnn_datamodule(LightningDataModule):
 
         self.train_annot_df['newpath'] = [p.split('/')[-1] for p in self.train_annot_df.Path]
         self.test_annot_df['newpath'] = [p.split('/')[-1] for p in self.test_annot_df.Path]
+        
+        
+        self.train_annot_df = utils_frcnn.correct_annotdf(self.train_annot_df,self.train_input)
+        self.test_annot_df = utils_frcnn.correct_annotdf(self.test_annot_df,self.test_input)
+        
+        # Check if all the input images have corresponding annotations
+        self.new_train_input = []
+        for i in range(len(self.train_input)):
+            path = self.train_input[i].split('/')[-1]
+            if len(self.train_annot_df[self.train_annot_df['newpath'] == path]) != 0:
+                self.new_train_input.append(self.train_input[i])
+
+        self.new_test_input = []
+        for i in range(len(self.test_input)):
+            path = self.test_input[i].split('/')[-1]
+            if len(self.test_annot_df[self.test_annot_df['newpath'] == path]) != 0:
+                self.new_test_input.append(self.test_input[i])
 
 
        
@@ -79,9 +95,9 @@ class frcnn_datamodule(LightningDataModule):
                             # A.Affine(scale = (1.1,1.1),translate_percent = (0.1,0.1), shear=(3,3))
                         ], bbox_params={'format': 'pascal_voc', 'label_fields': ['labels']})
 
-        self.data_train = frcnn_dataset.CustomDataset(self.train_input[:100],self.train_annot_df)
-        self.data_test = frcnn_dataset.CustomDataset(self.test_input[:10],self.test_annot_df)
-        self.data_val = frcnn_dataset.CustomDataset(self.test_input[:10],self.test_annot_df)
+        self.data_train = frcnn_dataset.CustomDataset(self.new_train_input,self.train_annot_df)
+        self.data_test = frcnn_dataset.CustomDataset(self.new_test_input,self.test_annot_df)
+        self.data_val = frcnn_dataset.CustomDataset(self.new_test_input,self.test_annot_df)
 
         print('Number of training images and test images')    
         print(len(self.data_train),len(self.data_test))

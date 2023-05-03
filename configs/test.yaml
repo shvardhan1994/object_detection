@@ -6,7 +6,7 @@ defaults:
   - datamodule: mnist.yaml # choose the datamodule for evaluation
   - model: mnist.yaml
   - callbacks: null
-  - logger: null
+  - logger: tensorboard.yaml
   - trainer: default.yaml
   - log_dir: evaluation.yaml
 

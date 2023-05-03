@@ -45,7 +45,7 @@ def apply_nms(orig_prediction, iou_thresh=0.2):
     
     return final_prediction
 
-def correct_annotdf(df):
+def correct_annotdf(df,path_input):
     """Function to correct the order of bounding box coordinates and remove the rows with negative coordinates
 
     Args:
@@ -55,10 +55,7 @@ def correct_annotdf(df):
         df: Corrected annotation dataframe
     """
 
-
-    df['X1'],df['Y1'],df['X2'],df['Y2'] = df['y1'],df['x1'],df['y2'],df['x2']
-    df = df.drop(['x1','y1','x2','y2'],axis=1)
-    rmvind = df[(df.iloc[:,5:].values < 0)].index.tolist()
+    rmvind = df[(df.iloc[:,1:5].values <= 0)].index.tolist()
     df.drop(rmvind,axis=0,inplace=True)
     df = df.reset_index(drop=True)
 

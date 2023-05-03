@@ -3,7 +3,6 @@ import torch
 from pytorch_lightning import LightningModule
 import torch.nn.functional as F
 from object_detection.datamodules import frcnn_datamodule
-from torchmetrics.detection import MeanAveragePrecision
 from itertools import chain
 import numpy as np
 from object_detection.utils import utils_frcnn
@@ -161,6 +160,8 @@ class frcnn_module(LightningModule):
         test_prec_rec_arr[0,:] = prec_coll
         test_prec_rec_arr[1,:] = rec_coll
         
+        print("P-R curve values", test_prec_rec_arr)
+        
         
         # Plot PR Curve
         figure = plt.figure(figsize=(15,10))
@@ -180,7 +181,7 @@ class frcnn_module(LightningModule):
         data = np.transpose(data, (2,0,1)) #convert to CxHxW
         data = torch.Tensor(data).unsqueeze(0)
         grid = make_grid(data)
-        self.logger.experiment[0].add_image('PR Curve/test', grid, self.current_epoch)
+        self.logger.experiment.add_image('PR Curve/test', grid, self.current_epoch)
         
         
     def configure_optimizers(self):

@@ -3,7 +3,6 @@ from torch.utils.data.dataset import Dataset  # For custom data-sets
 import torchvision.transforms as transforms
 import numpy as np
 from PIL import Image
-import torchio as tio
 import random
 import cv2
 from glob import glob
@@ -26,12 +25,22 @@ class CustomDataset(Dataset):
 
         # read the annotations
         path = image_name.split('/')[-1]
-        tempdf = self.annot_df[self.annot_df.newpath == path.split('/')[-1]]
+        tempdf = self.annot_df[self.annot_df.newpath == path]
         boxes = [tempdf.iloc[i,1:5].tolist() for i in range(len(tempdf))]
-        labels = [1] * len(boxes)
+        gtboxes = []
+        for i in range(len(boxes)):
+            if boxes[i][2] > boxes[i][0] and boxes[i][3] > boxes[i][1]:
+                gtboxes.append(boxes[i])
+            elif boxes[i][0] > boxes[i][2] and boxes[i][1] > boxes[i][3]:
+                gtboxes.append([boxes[i][2],boxes[i][3],boxes[i][0],boxes[i][1]])
+            elif boxes[i][0] > boxes[i][2] and boxes[i][3] > boxes[i][1]:
+                gtboxes.append([boxes[i][2],boxes[i][1],boxes[i][0],boxes[i][3]])
+            elif boxes[i][1] > boxes[i][3] and boxes[i][2] > boxes[i][0]:
+                gtboxes.append([boxes[i][0],boxes[i][3],boxes[i][2],boxes[i][1]])
+        labels = [1] * len(gtboxes)
 
         # bounding box to tensor
-        boxes = torch.as_tensor(boxes, dtype=torch.float32)
+        boxes = torch.as_tensor(gtboxes, dtype=torch.float32)
         # labels to tensor
         labels = torch.as_tensor(labels, dtype=torch.int64)
         # prepare the final `target` dictionary

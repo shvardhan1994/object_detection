@@ -2,17 +2,18 @@
 
 #SBATCH -o slurm_out_%j.job
 #SBATCH -e slurm_error_%j.job
-#SBATCH -p gpu_p 
+#SBATCH -p develbooster 
 #SBATCH --gres=gpu:1
-#SBATCH --qos gpu
-#SBATCH -c 3
-#SBATCH --mem=5G
-#SBATCH -t 00:30:00
+#SBATCH -c 4
+#SBATCH --nodes 1
+#SBATCH --mem=30G
+#SBATCH -t 02:00:00
 #SBATCH --nice=10000
+#SBATCH --account=hai_hmgu
 
-source $HOME/.bashrc
+
+
 echo 'Starting script'
 
-conda activate ml_template_env
-
-python train.py
+source ../sc_venv_template/activate.sh
+HYDRA_FULL_ERROR=1 python train.py
