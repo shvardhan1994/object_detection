@@ -3,9 +3,9 @@
 # specify here default evaluation configuration
 defaults:
   - _self_
-  - datamodule: mnist.yaml # choose the datamodule for evaluation
-  - model: mnist.yaml
-  - callbacks: null
+  - datamodule: frcnn.yaml # choose the datamodule for evaluation
+  - model: frcnn.yaml
+  - callbacks: default
   - logger: tensorboard.yaml
   - trainer: default.yaml
   - log_dir: evaluation.yaml
@@ -18,7 +18,7 @@ defaults:
 
 original_work_dir: ${hydra:runtime.cwd}
 
-data_dir: ${original_work_dir}/data/
+data_dir: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData
 
 print_config: True
 
@@ -29,4 +29,5 @@ seed: null
 name: "default"
 
 # passing checkpoint path is necessary
-ckpt_path: logs/experiments/runs/default/2022-03-21_04-40-51/checkpoints/last.ckpt
+# ckpt_path: logs/experiments/runs/default/2022-03-21_04-40-51/checkpoints/last.ckpt
+ckpt_path: /p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/logs/experiments/runs/default/2023-04-25_12-42-09/checkpoints/epoch_029.ckpt
