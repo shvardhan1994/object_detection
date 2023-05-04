@@ -12,7 +12,7 @@
 </div>
 
 # Description
-This project is the next SOTA model in ML.
+This is a custom pipeline dedicated to solving object detection problems and is derived from Quicksetup-ai, a flexible template as a quick setup for deep learning projects in research. The pipeline comes with preloaded Faster RCNN architecture and standard computer vision modules. 
 
 # Quickstart
 
@@ -26,10 +26,16 @@ Before using the template, one needs to install the project as a package.
 pip install -e .
 ```
 ## Run the MNIST example
-This pipeline comes with a toy example (MNIST dataset with a simple feedforward neural network). To run the training (resp. testing) pipeline, simply run:
+This pipeline comes with a toy example to perform object detection on sample of intestinal organoid images and a pretrained model trained on the same dataset. The sample images can either be trained on top of the pretrained model or can be used for inference directly. 
+
+To run the training (resp. testing) pipeline, simply run:
 ```
 python scripts/train.py
 # or python scripts/test.py
+```
+To run the testing pipeline, simply run:
+```
+python scripts/test.py
 ```
 Or, if you want to submit the training job to a submit (resp. interactive) cluster node via slurm, run:
 ```
