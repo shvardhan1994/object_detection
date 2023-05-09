@@ -35,7 +35,9 @@ original_work_dir: ${hydra:runtime.cwd}
 
 # path to folder with data
 
-data_dir: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData
+data_dir: ${original_work_dir}/data
+
+ckpt_path: ${original_work_dir}/scripts/logs/experiments/runs/default/2023-04-25_12-42-09/checkpoints/epoch_029.ckpt
 
 
 # pretty print config at the start of the run using Rich library

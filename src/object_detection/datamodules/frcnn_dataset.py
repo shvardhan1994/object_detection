@@ -50,7 +50,7 @@ class CustomDataset(Dataset):
         image = torch.as_tensor(image, dtype=torch.float32)
         
 
-        return image, target
+        return image, target, image_name
 
 
     def __len__(self):

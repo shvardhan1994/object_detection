@@ -82,7 +82,7 @@ def train(config: DictConfig) -> Optional[float]:
     # Train the model
     if config.get("train"):
         log.info("Starting training!")
-        trainer.fit(model=model, datamodule=datamodule)
+        trainer.fit(model=model, datamodule=datamodule, ckpt_path=config.ckpt_path)
 
     # Get metric score for hyperparameter optimization
     optimized_metric = config.get("optimized_metric")

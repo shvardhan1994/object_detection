@@ -4,6 +4,7 @@ weight_decay: 0.0005
 momentum: 0.9
 nms_thresh: 0.2
 iou_thresh: 0.7 # IOU thresh during inference
+pred_save_path: ${data_dir}/predictions
 
 net:
   _target_: object_detection.models.components.frcnn.frcnn

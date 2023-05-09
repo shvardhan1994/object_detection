@@ -1,7 +1,7 @@
 _target_: object_detection.datamodules.frcnn_datamodule.frcnn_datamodule
 
-train_data_dir: ${data_dir}/train # data_dir is specified in config.yaml
-test_data_dir: ${data_dir}/test # data_dir is specified in config.yaml
+train_data_dir: ${data_dir}/sample_train # data_dir is specified in config.yaml
+test_data_dir: ${data_dir}/sample_test # data_dir is specified in config.yaml
 
 train_labels_file: ${data_dir}/train_labels.csv 
 test_labels_file: ${data_dir}/test_labels.csv 
