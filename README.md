@@ -26,7 +26,7 @@ Before using the template, one needs to install the project as a package.
 pip install -e .
 ```
 ## Run the MNIST example
-This pipeline comes with a toy example to perform object detection on sample of intestinal organoid images and a pretrained model trained on the same dataset. The sample images can either be trained on top of the pretrained model or can be used for inference directly. 
+This pipeline comes with a toy example to perform object detection on sample of intestinal organoid images and a pretrained model trained on the same dataset. The sample images can be used for inference directly and the predictions are saved `ObjectDetection/scripts/data/predictions` .
 
 To run the training (resp. testing) pipeline, simply run:
 ```
