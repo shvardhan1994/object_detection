@@ -25,10 +25,10 @@ Before using the template, one needs to install the project as a package.
 ```
 pip install -e .
 ```
-## Run the MNIST example
+## Run the organoid detection example
 This pipeline comes with a toy example to perform object detection on sample of intestinal organoid images and a pretrained model trained on the same dataset. The sample images can be used for inference directly and the predictions are saved `ObjectDetection/scripts/data/predictions` .
 
-To run the training (resp. testing) pipeline, simply run:
+To run the training pipeline, simply run:
 ```
 python scripts/train.py
 # or python scripts/test.py
@@ -68,10 +68,7 @@ sbatch job_submission.sbatch
 │   ├── test.yaml                               <- Main config for testing
 │   └── train.yaml                              <- Main config for training
 │
-├── data                                 <- Project data
-│   └── MNIST
-│       ├── processed                               <- Processed data
-│       └── raw                                     <- Raw data
+│
 │
 ├── docs                                 <- Directory for Sphinx documentation in rst or md.
 ├── models                               <- Trained and serialized models, model predictions
@@ -79,6 +76,11 @@ sbatch job_submission.sbatch
 ├── reports                              <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures                                 <- Generated plots and figures for reports.
 ├── scripts                              <- Scripts used in project
+│   ├── data                             <- Sample data to perform inference on pretrained model
+        ├── sample_test
+        ├── sample_train
+        ├── test_labels.csv
+        ├── train_labels.csv
 │   ├── job_submission.sbatch               <- Submit training job to slurm
 │   ├── job_submission_interactive.sbatch   <- Submit training job to slurm (interactive node)
 │   ├── test.py                             <- Run testing
