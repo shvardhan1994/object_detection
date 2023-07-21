@@ -129,12 +129,12 @@ class frcnn_module(LightningModule):
                 bboxes = [str(it.item()) for it in pred_bboxes[pred_id]]
                 img_output[pred_id]['bbox'] = bboxes
                 img_output[pred_id]['score'] = str(scores[pred_id].item())
-            preds_dict[image_names[i]] = img_output
+            preds_dict[image_names[i].split('/')[-1]] = img_output
 
         
         if not os.path.exists(f"{self.pred_save_path}"):
             os.makedirs(f"{self.pred_save_path}")
-        with open(f"{self.pred_save_path}/preds_annotB2.json", 'w') as f: json.dump(preds_dict, f)
+        with open(f"{self.pred_save_path}/model_predictions.json", 'w') as f: json.dump(preds_dict, f)
             
             # nms_preds.append(utils_frcnn.apply_nms(preds[i], iou_thresh=self.nms_thresh))
             

@@ -29,4 +29,5 @@ seed: null
 name: "default"
 
 # passing checkpoint path is necessary
-ckpt_path: ${original_work_dir}/scripts/pretrained_model/2023-04-25_12-42-09/checkpoints/epoch_029.ckpt
+# ckpt_path: ${original_work_dir}/scripts/pretrained_model/2023-04-25_12-42-09/checkpoints/epoch_029.ckpt
+ckpt_path: 
