@@ -16,14 +16,51 @@ This is a custom pipeline dedicated to solving object detection problems and is 
 
 # Quickstart
 
-## Create the pipeline environment and install the object_detection package
-Before using the template, one needs to install the project as a package.
-* First, create a virtual environment.
-> You can either do it with conda (preferred) or venv.
-* Then, activate the environment
-* Finally, install the project as a package. Run:
-```
+### 1. Install dependencies
+
+#### 1.1 Installing dependencies on your local machine (with CPU or GPU) and creating conda environment.
+
+```bash
+# clone project
+git clone https://github.com/HelmholtzAI-Consultants-Munich/object_detection.git
+cd object_detection
+
+# [OPTIONAL] create conda environment
+conda create -n venv python>=3.8
+conda activate venv
+
+# Ensure that the lines between 51 and 93 are not commented in the setup.cfg file.
+
+# install requirements and "object_detection module"
 pip install -e .
+```
+
+#### 1.2 Installing dependencies on JUWELS and creating a virtual environment.
+
+```bash
+# clone project
+git clone https://github.com/HelmholtzAI-Consultants-Munich/object_detection.git
+cd object_detection
+
+# [OPTIONAL] create virtual environment
+git clone https://gitlab.jsc.fz-juelich.de/kesselheim1/sc_venv_template.git
+
+# Edit `config.sh` to change name and location of the venv if required.
+# Edit `modules.sh` to change the modules loaded prior to the creation of the venv.
+# Copy the lines between 51 and 93 of `setup.cfg` to `sc_venv_template/requirements.txt` and comment the same lines between 51 and 93 in the setup.cfg file.
+
+# Create the environment with 
+bash setup.sh
+
+# Create a Kernel to use Jupyter notebooks on JUWELS
+bash create_kernel.sh
+
+# Activate the virtual environment with 
+source sc_venv_template/activate.sh
+
+# Once the environment is created, execute 
+pip install -e .
+
 ```
 ## Run the organoid detection example
 This pipeline comes with a toy example to perform object detection on sample of intestinal organoid images. 
