@@ -51,3 +51,7 @@ sbatch job_submission.sbatch
 > * When evaluating (running `test.py`), make sure you give the correct checkpoint path in `configs/test.yaml`
 
 The predictions are saved in this path as a json file `object_detection/scripts/data/predictions`
+
+### Citation
+The sample dataset is acquired from the below research,
+`Kassis, Timothy, et al. "OrgaQuant: human intestinal organoid localization and quantification using deep convolutional neural networks." Scientific reports 9.1 (2019): 12479.`
