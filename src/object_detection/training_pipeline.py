@@ -82,7 +82,7 @@ def train(config: DictConfig) -> Optional[float]:
     # Train the model
     if config.get("train"):
         log.info("Starting training!")
-        trainer.fit(model=model, datamodule=datamodule, ckpt_path=config.ckpt_path)
+        trainer.fit(model=model, datamodule=datamodule, ckpt_path=config.get("ckpt_path"))
 
     # Get metric score for hyperparameter optimization
     optimized_metric = config.get("optimized_metric")
@@ -99,7 +99,7 @@ def train(config: DictConfig) -> Optional[float]:
         if not config.get("train") or config.trainer.get("fast_dev_run"):
             ckpt_path = None
         log.info("Starting testing!")
-        trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
+        trainer.test(model=model, datamodule=datamodule, ckpt_path=config.ckpt_path)
 
     # Make sure everything closed properly
     log.info("Finalizing!")
