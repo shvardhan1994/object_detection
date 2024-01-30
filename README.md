@@ -63,22 +63,54 @@ pip install -e .
 
 ```
 ## Run the organoid detection example
-This pipeline comes with a toy example to perform object detection on sample of intestinal organoid images. 
+
+**Note**: This pipeline performs object detection on intestinal organoid images. The dataset is split into train, validation and test set. The dataset has to be saved in object_detection/data/orgaquant folder. The data folder should follow below structure.
+
+├── object_detection                             
+│   ├── data                               
+│       ├── orgaquant                             
+│           ├── train
+            ├── val
+            ├── test
+            ├── train_labels.csv
+            ├── val_labels.csv
+            ├── test_labels.csv
+        ├── predictions
+        ├── metrics
+
+The .csv files contains the annotations for the bounding boxes of organoids present in the input images. The .csv file has below structure,
+
+```x1 | y1 | x2 | y2 | class_name | path```
+
 
 To run the training pipeline, simply run:
 ```
 python scripts/train.py
 
 ```
-To run the testing pipeline, simply run:
-```
-python scripts/test.py
-```
+
 Or, if you want to submit the training job to a submit (resp. interactive) cluster node via slurm, run:
 ```
 sbatch job_submission.sbatch
 # or sbatch job_submission_interactive.sbatch
 ```
+By default, the training pipeline also runs the testing pipeline on the testset based on the best model checkpoint during training.
+
+If you want to run just testing pipeline exclusively, make sure you give the correct checkpoint path in `configs/test.yaml` and then simply run:
+```
+python scripts/test.py
+
+```
+The predictions are saved by default in this path as a json file `object_detection/scripts/data/orgaquant/predictions`
+
+To compute the evaluation metrics on the testset (this pipeline calculates Precisin-Recall values for different box score thresholds and saves them as an array in `object_detection/data/orgaquant/metrics`), specify the path to the predictions in .json format as mentioned previously in the inference script in `object_detection/notebooks/inference.py`, then simply run:
+
+```
+python inference.py
+
+```
+
+
 > * The experiments, evaluations, etc., are stored under the `logs` directory.
 > * The default experiments tracking system is mlflow. The `mlruns` directory is contained in `logs`. To view a user friendly view of the experiments, run:
 > ```
@@ -87,7 +119,7 @@ sbatch job_submission.sbatch
 > ```
 > * When evaluating (running `test.py`), make sure you give the correct checkpoint path in `configs/test.yaml`
 
-The predictions are saved in this path as a json file `object_detection/scripts/data/predictions`
+
 
 ### References
 The sample dataset is acquired from the below research,
