@@ -65,7 +65,7 @@ pip install -e .
 ## Run the organoid detection example
 
 **Note**: This pipeline performs object detection on intestinal organoid images. The dataset is split into train, validation and test set. The dataset has to be saved in object_detection/data/orgaquant folder. The data folder should follow below structure.
-
+```
 ├── object_detection                             
 │   ├── data                               
 │       ├── orgaquant                             
@@ -77,7 +77,7 @@ pip install -e .
             ├── test_labels.csv
         ├── predictions
         ├── metrics
-
+```
 The .csv files contains the annotations for the bounding boxes of organoids present in the input images. The .csv file has below structure,
 
 ```x1 | y1 | x2 | y2 | class_name | path```
