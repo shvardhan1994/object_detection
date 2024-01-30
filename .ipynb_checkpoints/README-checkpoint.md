@@ -106,7 +106,7 @@ The predictions are saved by default in this path as a json file `object_detecti
 To compute the evaluation metrics on the testset (this pipeline calculates Precisin-Recall values for different box score thresholds and saves them as an array in `object_detection/data/orgaquant/metrics`), specify the path to the predictions in .json format as mentioned previously in the inference script in `object_detection/notebooks/inference.py`, then simply run:
 
 ```
-python inference.py
+python notebooks/inference.py
 
 ```
 
