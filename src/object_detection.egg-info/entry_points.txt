@@ -1,0 +1,4 @@
+[console_scripts]
+save_data_version = object_detection.utils.dvc_utils:save_data_version
+save_initial_data = object_detection.utils.dvc_utils:save_initial_data
+switch_to_data_version = object_detection.utils.dvc_utils:switch_to_data_version

@@ -1,0 +1,130 @@
+Starting script
+The activation script must be sourced, otherwise the virtual environment will not work.
+Setting vars
+[[36m2023-04-25 11:31:40,242[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmp7_4kzvu8[0m
+[[36m2023-04-25 11:31:40,243[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmp7_4kzvu8/_remote_module_non_scriptable.py[0m
+[[36m2023-04-25 11:31:40,930[0m][[34mobject_detection.utils[0m][[32mINFO[0m] - Disabling python warnings! <config.ignore_warnings=True>[0m
+[[36m2023-04-25 11:31:40,930[0m][[34mobject_detection.utils[0m][[32mINFO[0m] - Printing config tree with Rich! <config.print_config=True>[0m
+CONFIG
+├── datamodule
+│   └── _target_: object_detection.datamodules.frcnn_datamodule.frcnn_datamodule                                                                                                                         
+│       train_data_dir: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData/train                                                                                                                         
+│       test_data_dir: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData/test                                                                                                                           
+│       train_labels_file: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData/train_labels.csv                                                                                                           
+│       test_labels_file: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData/test_labels.csv                                                                                                             
+│       batch_size: 16                                                                                                                                                                                   
+│       num_workers: 0                                                                                                                                                                                   
+│       pin_memory: false                                                                                                                                                                                
+│       aug_flag: 'N'                                                                                                                                                                                    
+│                                                                                                                                                                                                        
+├── model
+│   └── _target_: object_detection.models.frcnn_module.frcnn_module                                                                                                                                      
+│       lr: 0.001                                                                                                                                                                                        
+│       weight_decay: 0.0005                                                                                                                                                                             
+│       momentum: 0.9                                                                                                                                                                                    
+│       nms_thresh: 0.2                                                                                                                                                                                  
+│       iou_thresh: 0.7                                                                                                                                                                                  
+│       net:                                                                                                                                                                                             
+│         _target_: object_detection.models.components.frcnn.frcnn                                                                                                                                       
+│         num_classes: 2                                                                                                                                                                                 
+│                                                                                                                                                                                                        
+├── callbacks
+│   └── model_checkpoint:                                                                                                                                                                                
+│         _target_: pytorch_lightning.callbacks.ModelCheckpoint                                                                                                                                          
+│         monitor: validation/loss                                                                                                                                                                       
+│         mode: min                                                                                                                                                                                      
+│         save_top_k: -1                                                                                                                                                                                 
+│         every_n_epochs: 5                                                                                                                                                                              
+│         save_last: true                                                                                                                                                                                
+│         verbose: false                                                                                                                                                                                 
+│         dirpath: checkpoints/                                                                                                                                                                          
+│         filename: epoch_{epoch:03d}                                                                                                                                                                    
+│         auto_insert_metric_name: false                                                                                                                                                                 
+│       early_stopping:                                                                                                                                                                                  
+│         _target_: pytorch_lightning.callbacks.EarlyStopping                                                                                                                                            
+│         monitor: validation/loss                                                                                                                                                                       
+│         mode: min                                                                                                                                                                                      
+│         patience: 10                                                                                                                                                                                   
+│         min_delta: 0                                                                                                                                                                                   
+│       model_summary:                                                                                                                                                                                   
+│         _target_: pytorch_lightning.callbacks.RichModelSummary                                                                                                                                         
+│         max_depth: -1                                                                                                                                                                                  
+│       rich_progress_bar:                                                                                                                                                                               
+│         _target_: pytorch_lightning.callbacks.RichProgressBar                                                                                                                                          
+│                                                                                                                                                                                                        
+├── logger
+│   └── tensorboard:                                                                                                                                                                                     
+│         _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger                                                                                                                              
+│         save_dir: /p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/logs/tensorboard                                                                                                        
+│         name: null                                                                                                                                                                                     
+│         version: default                                                                                                                                                                               
+│         log_graph: false                                                                                                                                                                               
+│         default_hp_metric: true                                                                                                                                                                        
+│         prefix: ''                                                                                                                                                                                     
+│                                                                                                                                                                                                        
+├── trainer
+│   └── _target_: pytorch_lightning.Trainer                                                                                                                                                              
+│       accelerator: gpu                                                                                                                                                                                 
+│       devices: 4                                                                                                                                                                                       
+│       min_epochs: 25                                                                                                                                                                                   
+│       max_epochs: 30                                                                                                                                                                                   
+│       num_sanity_val_steps: 1                                                                                                                                                                          
+│       check_val_every_n_epoch: 1                                                                                                                                                                       
+│       val_check_interval: 1.0                                                                                                                                                                          
+│                                                                                                                                                                                                        
+├── original_work_dir
+│   └── /p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts                                                                                                                                     
+├── data_dir
+│   └── /p/project/hai_hmgu/workspace/harsha/OrgaQuantData                                                                                                                                               
+├── print_config
+│   └── True                                                                                                                                                                                             
+├── ignore_warnings
+│   └── True                                                                                                                                                                                             
+├── train
+│   └── True                                                                                                                                                                                             
+├── test
+│   └── True                                                                                                                                                                                             
+├── seed
+│   └── None                                                                                                                                                                                             
+└── name
+    └── default                                                                                                                                                                                          
+[[36m2023-04-25 11:31:41,006[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating datamodule <object_detection.datamodules.frcnn_datamodule.frcnn_datamodule>[0m
+[[36m2023-04-25 11:31:50,472[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating model <object_detection.models.frcnn_module.frcnn_module>[0m
+[[36m2023-04-25 11:31:51,289[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating callback <pytorch_lightning.callbacks.ModelCheckpoint>[0m
+[[36m2023-04-25 11:31:51,292[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>[0m
+[[36m2023-04-25 11:31:51,292[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating callback <pytorch_lightning.callbacks.RichModelSummary>[0m
+[[36m2023-04-25 11:31:51,293[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating callback <pytorch_lightning.callbacks.RichProgressBar>[0m
+[[36m2023-04-25 11:31:51,294[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>[0m
+[[36m2023-04-25 11:31:51,296[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating trainer <pytorch_lightning.Trainer>[0m
+[[36m2023-04-25 11:31:51,440[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - Trainer already configured with model summary callbacks: [<class 'pytorch_lightning.callbacks.rich_model_summary.RichModelSummary'>]. Skipping setting a default `ModelSummary` callback.[0m
+[[36m2023-04-25 11:31:51,457[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - GPU available: True (cuda), used: True[0m
+[[36m2023-04-25 11:31:51,457[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - TPU available: False, using: 0 TPU cores[0m
+[[36m2023-04-25 11:31:51,457[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - IPU available: False, using: 0 IPUs[0m
+[[36m2023-04-25 11:31:51,457[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - HPU available: False, using: 0 HPUs[0m
+[[36m2023-04-25 11:31:51,457[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - `Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..[0m
+[[36m2023-04-25 11:31:51,457[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Logging hyperparameters![0m
+[[36m2023-04-25 11:31:52,575[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Starting training![0m
+[[36m2023-04-25 11:31:52,761[0m][[34mlightning_fabric.utilities.distributed[0m][[32mINFO[0m] - Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4[0m
+[[36m2023-04-25 11:31:58,241[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmp7pdkphzc[0m
+[[36m2023-04-25 11:31:58,241[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmp8u8v7qca[0m
+[[36m2023-04-25 11:31:58,241[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmp7pdkphzc/_remote_module_non_scriptable.py[0m
+[[36m2023-04-25 11:31:58,241[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmp8u8v7qca/_remote_module_non_scriptable.py[0m
+[[36m2023-04-25 11:31:58,242[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmpoq09u2id[0m
+[[36m2023-04-25 11:31:58,243[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmpoq09u2id/_remote_module_non_scriptable.py[0m
+[[36m2023-04-25 11:32:00,274[0m][[34mlightning_fabric.utilities.distributed[0m][[32mINFO[0m] - Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/4[0m
+[[36m2023-04-25 11:32:00,283[0m][[34mlightning_fabric.utilities.distributed[0m][[32mINFO[0m] - Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/4[0m
+[[36m2023-04-25 11:32:00,326[0m][[34mlightning_fabric.utilities.distributed[0m][[32mINFO[0m] - Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/4[0m
+[[36m2023-04-25 11:32:01,213[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 2[0m
+[[36m2023-04-25 11:32:01,229[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 0[0m
+[[36m2023-04-25 11:32:01,233[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 3[0m
+[[36m2023-04-25 11:32:01,234[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 1[0m
+[[36m2023-04-25 11:32:01,235[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 1: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.[0m
+[[36m2023-04-25 11:32:01,239[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.[0m
+[[36m2023-04-25 11:32:01,240[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - ----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 4 processes
+----------------------------------------------------------------------------------------------------
+[0m
+[[36m2023-04-25 11:32:01,243[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 3: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.[0m
+[[36m2023-04-25 11:32:01,244[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 2: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.[0m
+[[36m2023-04-25 11:32:01,281[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision[0m

@@ -1,0 +1,356 @@
+Starting script
+The activation script must be sourced, otherwise the virtual environment will not work.
+Setting vars
+[[36m2023-04-25 12:42:43,354[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmpar0usvsx[0m
+[[36m2023-04-25 12:42:43,354[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmpar0usvsx/_remote_module_non_scriptable.py[0m
+[[36m2023-04-25 12:42:44,238[0m][[34mobject_detection.utils[0m][[32mINFO[0m] - Disabling python warnings! <config.ignore_warnings=True>[0m
+[[36m2023-04-25 12:42:44,238[0m][[34mobject_detection.utils[0m][[32mINFO[0m] - Printing config tree with Rich! <config.print_config=True>[0m
+CONFIG
+├── datamodule
+│   └── _target_: object_detection.datamodules.frcnn_datamodule.frcnn_datamodule                                                                                                                         
+│       train_data_dir: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData/train                                                                                                                         
+│       test_data_dir: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData/test                                                                                                                           
+│       train_labels_file: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData/train_labels.csv                                                                                                           
+│       test_labels_file: /p/project/hai_hmgu/workspace/harsha/OrgaQuantData/test_labels.csv                                                                                                             
+│       batch_size: 16                                                                                                                                                                                   
+│       num_workers: 0                                                                                                                                                                                   
+│       pin_memory: false                                                                                                                                                                                
+│       aug_flag: 'N'                                                                                                                                                                                    
+│                                                                                                                                                                                                        
+├── model
+│   └── _target_: object_detection.models.frcnn_module.frcnn_module                                                                                                                                      
+│       lr: 0.001                                                                                                                                                                                        
+│       weight_decay: 0.0005                                                                                                                                                                             
+│       momentum: 0.9                                                                                                                                                                                    
+│       nms_thresh: 0.2                                                                                                                                                                                  
+│       iou_thresh: 0.7                                                                                                                                                                                  
+│       net:                                                                                                                                                                                             
+│         _target_: object_detection.models.components.frcnn.frcnn                                                                                                                                       
+│         num_classes: 2                                                                                                                                                                                 
+│                                                                                                                                                                                                        
+├── callbacks
+│   └── model_checkpoint:                                                                                                                                                                                
+│         _target_: pytorch_lightning.callbacks.ModelCheckpoint                                                                                                                                          
+│         monitor: validation/loss                                                                                                                                                                       
+│         mode: min                                                                                                                                                                                      
+│         save_top_k: -1                                                                                                                                                                                 
+│         every_n_epochs: 5                                                                                                                                                                              
+│         save_last: true                                                                                                                                                                                
+│         verbose: false                                                                                                                                                                                 
+│         dirpath: checkpoints/                                                                                                                                                                          
+│         filename: epoch_{epoch:03d}                                                                                                                                                                    
+│         auto_insert_metric_name: false                                                                                                                                                                 
+│       early_stopping:                                                                                                                                                                                  
+│         _target_: pytorch_lightning.callbacks.EarlyStopping                                                                                                                                            
+│         monitor: validation/loss                                                                                                                                                                       
+│         mode: min                                                                                                                                                                                      
+│         patience: 10                                                                                                                                                                                   
+│         min_delta: 0                                                                                                                                                                                   
+│       model_summary:                                                                                                                                                                                   
+│         _target_: pytorch_lightning.callbacks.RichModelSummary                                                                                                                                         
+│         max_depth: -1                                                                                                                                                                                  
+│       rich_progress_bar:                                                                                                                                                                               
+│         _target_: pytorch_lightning.callbacks.RichProgressBar                                                                                                                                          
+│                                                                                                                                                                                                        
+├── logger
+│   └── tensorboard:                                                                                                                                                                                     
+│         _target_: pytorch_lightning.loggers.tensorboard.TensorBoardLogger                                                                                                                              
+│         save_dir: /p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/logs/tensorboard                                                                                                        
+│         name: null                                                                                                                                                                                     
+│         version: default                                                                                                                                                                               
+│         log_graph: false                                                                                                                                                                               
+│         default_hp_metric: true                                                                                                                                                                        
+│         prefix: ''                                                                                                                                                                                     
+│                                                                                                                                                                                                        
+├── trainer
+│   └── _target_: pytorch_lightning.Trainer                                                                                                                                                              
+│       accelerator: gpu                                                                                                                                                                                 
+│       devices: 4                                                                                                                                                                                       
+│       min_epochs: 25                                                                                                                                                                                   
+│       max_epochs: 30                                                                                                                                                                                   
+│       num_sanity_val_steps: 1                                                                                                                                                                          
+│       check_val_every_n_epoch: 1                                                                                                                                                                       
+│       val_check_interval: 1.0                                                                                                                                                                          
+│                                                                                                                                                                                                        
+├── original_work_dir
+│   └── /p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts                                                                                                                                     
+├── data_dir
+│   └── /p/project/hai_hmgu/workspace/harsha/OrgaQuantData                                                                                                                                               
+├── print_config
+│   └── True                                                                                                                                                                                             
+├── ignore_warnings
+│   └── True                                                                                                                                                                                             
+├── train
+│   └── True                                                                                                                                                                                             
+├── test
+│   └── True                                                                                                                                                                                             
+├── seed
+│   └── None                                                                                                                                                                                             
+└── name
+    └── default                                                                                                                                                                                          
+[[36m2023-04-25 12:42:44,296[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating datamodule <object_detection.datamodules.frcnn_datamodule.frcnn_datamodule>[0m
+[[36m2023-04-25 12:42:55,318[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating model <object_detection.models.frcnn_module.frcnn_module>[0m
+[[36m2023-04-25 12:42:56,145[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating callback <pytorch_lightning.callbacks.ModelCheckpoint>[0m
+[[36m2023-04-25 12:42:56,147[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating callback <pytorch_lightning.callbacks.EarlyStopping>[0m
+[[36m2023-04-25 12:42:56,148[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating callback <pytorch_lightning.callbacks.RichModelSummary>[0m
+[[36m2023-04-25 12:42:56,148[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating callback <pytorch_lightning.callbacks.RichProgressBar>[0m
+[[36m2023-04-25 12:42:56,149[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating logger <pytorch_lightning.loggers.tensorboard.TensorBoardLogger>[0m
+[[36m2023-04-25 12:42:56,152[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Instantiating trainer <pytorch_lightning.Trainer>[0m
+[[36m2023-04-25 12:42:56,297[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - Trainer already configured with model summary callbacks: [<class 'pytorch_lightning.callbacks.rich_model_summary.RichModelSummary'>]. Skipping setting a default `ModelSummary` callback.[0m
+[[36m2023-04-25 12:42:56,314[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - GPU available: True (cuda), used: True[0m
+[[36m2023-04-25 12:42:56,314[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - TPU available: False, using: 0 TPU cores[0m
+[[36m2023-04-25 12:42:56,314[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - IPU available: False, using: 0 IPUs[0m
+[[36m2023-04-25 12:42:56,314[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - HPU available: False, using: 0 HPUs[0m
+[[36m2023-04-25 12:42:56,314[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - `Trainer(val_check_interval=1.0)` was configured so validation will run at the end of the training epoch..[0m
+[[36m2023-04-25 12:42:56,314[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Logging hyperparameters![0m
+[[36m2023-04-25 12:43:00,222[0m][[34mobject_detection.training_pipeline[0m][[32mINFO[0m] - Starting training![0m
+[[36m2023-04-25 12:43:00,408[0m][[34mlightning_fabric.utilities.distributed[0m][[32mINFO[0m] - Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4[0m
+[[36m2023-04-25 12:43:03,605[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmpz838g84i[0m
+[[36m2023-04-25 12:43:03,605[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmpz838g84i/_remote_module_non_scriptable.py[0m
+[[36m2023-04-25 12:43:03,637[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmpsm3o4rrw[0m
+[[36m2023-04-25 12:43:03,637[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmpsm3o4rrw/_remote_module_non_scriptable.py[0m
+[[36m2023-04-25 12:43:03,670[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Created a temporary directory at /tmp/tmpkw6qte6s[0m
+[[36m2023-04-25 12:43:03,670[0m][[34mtorch.distributed.nn.jit.instantiator[0m][[32mINFO[0m] - Writing /tmp/tmpkw6qte6s/_remote_module_non_scriptable.py[0m
+[[36m2023-04-25 12:43:06,627[0m][[34mlightning_fabric.utilities.distributed[0m][[32mINFO[0m] - Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/4[0m
+[[36m2023-04-25 12:43:06,696[0m][[34mlightning_fabric.utilities.distributed[0m][[32mINFO[0m] - Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/4[0m
+[[36m2023-04-25 12:43:06,745[0m][[34mlightning_fabric.utilities.distributed[0m][[32mINFO[0m] - Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/4[0m
+[[36m2023-04-25 12:43:07,562[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 1[0m
+[[36m2023-04-25 12:43:07,571[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 0[0m
+[[36m2023-04-25 12:43:07,572[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 3[0m
+[[36m2023-04-25 12:43:07,575[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Added key: store_based_barrier_key:1 to store for rank: 2[0m
+[[36m2023-04-25 12:43:07,575[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 2: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.[0m
+[[36m2023-04-25 12:43:07,582[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.[0m
+[[36m2023-04-25 12:43:07,582[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - ----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 4 processes
+----------------------------------------------------------------------------------------------------
+[0m
+[[36m2023-04-25 12:43:07,582[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 1: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.[0m
+[[36m2023-04-25 12:43:07,583[0m][[34mtorch.distributed.distributed_c10d[0m][[32mINFO[0m] - Rank 3: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.[0m
+[[36m2023-04-25 12:43:07,616[0m][[34mpytorch_lightning.utilities.rank_zero[0m][[32mINFO[0m] - You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision[0m
+Number of training images and test images
+1629 112
+Dimension of the image torch.Size([3, 300, 300])
+[[36m2023-04-25 12:43:11,674[0m][[34mpytorch_lightning.accelerators.cuda[0m][[32mINFO[0m] - LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3     ][0m
+Number of training images and test images
+1629 112
+Dimension of the image torch.Size([3, 300, 300])
+[[36m2023-04-25 12:43:11,675[0m][[34mpytorch_lightning.accelerators.cuda[0m][[32mINFO[0m] - LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3     ][0m
+Number of training images and test images
+1629 112
+Dimension of the image torch.Size([3, 300, 300])
+[[36m2023-04-25 12:43:11,675[0m][[34mpytorch_lightning.accelerators.cuda[0m][[32mINFO[0m] - LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3     ][0m
+Number of training images and test images
+1629 112
+Dimension of the image torch.Size([3, 300, 300])
+[[36m2023-04-25 12:43:11,675[0m][[34mpytorch_lightning.accelerators.cuda[0m][[32mINFO[0m] - LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3     ][0m
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+┃     ┃ Name                                          ┃ Type                     ┃ Params ┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩
+│ 0   │ net                                           │ frcnn                    │ 41.3 M │
+│ 1   │ net.model                                     │ FasterRCNN               │ 41.3 M │
+│ 2   │ net.model.transform                           │ GeneralizedRCNNTransform │      0 │
+│ 3   │ net.model.backbone                            │ BackboneWithFPN          │ 26.8 M │
+│ 4   │ net.model.backbone.body                       │ IntermediateLayerGetter  │ 23.5 M │
+│ 5   │ net.model.backbone.body.conv1                 │ Conv2d                   │  9.4 K │
+│ 6   │ net.model.backbone.body.bn1                   │ FrozenBatchNorm2d        │      0 │
+│ 7   │ net.model.backbone.body.relu                  │ ReLU                     │      0 │
+│ 8   │ net.model.backbone.body.maxpool               │ MaxPool2d                │      0 │
+│ 9   │ net.model.backbone.body.layer1                │ Sequential               │  212 K │
+│ 10  │ net.model.backbone.body.layer1.0              │ Bottleneck               │ 73.7 K │
+│ 11  │ net.model.backbone.body.layer1.0.conv1        │ Conv2d                   │  4.1 K │
+│ 12  │ net.model.backbone.body.layer1.0.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 13  │ net.model.backbone.body.layer1.0.conv2        │ Conv2d                   │ 36.9 K │
+│ 14  │ net.model.backbone.body.layer1.0.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 15  │ net.model.backbone.body.layer1.0.conv3        │ Conv2d                   │ 16.4 K │
+│ 16  │ net.model.backbone.body.layer1.0.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 17  │ net.model.backbone.body.layer1.0.relu         │ ReLU                     │      0 │
+│ 18  │ net.model.backbone.body.layer1.0.downsample   │ Sequential               │ 16.4 K │
+│ 19  │ net.model.backbone.body.layer1.0.downsample.0 │ Conv2d                   │ 16.4 K │
+│ 20  │ net.model.backbone.body.layer1.0.downsample.1 │ FrozenBatchNorm2d        │      0 │
+│ 21  │ net.model.backbone.body.layer1.1              │ Bottleneck               │ 69.6 K │
+│ 22  │ net.model.backbone.body.layer1.1.conv1        │ Conv2d                   │ 16.4 K │
+│ 23  │ net.model.backbone.body.layer1.1.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 24  │ net.model.backbone.body.layer1.1.conv2        │ Conv2d                   │ 36.9 K │
+│ 25  │ net.model.backbone.body.layer1.1.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 26  │ net.model.backbone.body.layer1.1.conv3        │ Conv2d                   │ 16.4 K │
+│ 27  │ net.model.backbone.body.layer1.1.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 28  │ net.model.backbone.body.layer1.1.relu         │ ReLU                     │      0 │
+│ 29  │ net.model.backbone.body.layer1.2              │ Bottleneck               │ 69.6 K │
+│ 30  │ net.model.backbone.body.layer1.2.conv1        │ Conv2d                   │ 16.4 K │
+│ 31  │ net.model.backbone.body.layer1.2.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 32  │ net.model.backbone.body.layer1.2.conv2        │ Conv2d                   │ 36.9 K │
+│ 33  │ net.model.backbone.body.layer1.2.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 34  │ net.model.backbone.body.layer1.2.conv3        │ Conv2d                   │ 16.4 K │
+│ 35  │ net.model.backbone.body.layer1.2.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 36  │ net.model.backbone.body.layer1.2.relu         │ ReLU                     │      0 │
+│ 37  │ net.model.backbone.body.layer2                │ Sequential               │  1.2 M │
+│ 38  │ net.model.backbone.body.layer2.0              │ Bottleneck               │  376 K │
+│ 39  │ net.model.backbone.body.layer2.0.conv1        │ Conv2d                   │ 32.8 K │
+│ 40  │ net.model.backbone.body.layer2.0.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 41  │ net.model.backbone.body.layer2.0.conv2        │ Conv2d                   │  147 K │
+│ 42  │ net.model.backbone.body.layer2.0.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 43  │ net.model.backbone.body.layer2.0.conv3        │ Conv2d                   │ 65.5 K │
+│ 44  │ net.model.backbone.body.layer2.0.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 45  │ net.model.backbone.body.layer2.0.relu         │ ReLU                     │      0 │
+│ 46  │ net.model.backbone.body.layer2.0.downsample   │ Sequential               │  131 K │
+│ 47  │ net.model.backbone.body.layer2.0.downsample.0 │ Conv2d                   │  131 K │
+│ 48  │ net.model.backbone.body.layer2.0.downsample.1 │ FrozenBatchNorm2d        │      0 │
+│ 49  │ net.model.backbone.body.layer2.1              │ Bottleneck               │  278 K │
+│ 50  │ net.model.backbone.body.layer2.1.conv1        │ Conv2d                   │ 65.5 K │
+│ 51  │ net.model.backbone.body.layer2.1.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 52  │ net.model.backbone.body.layer2.1.conv2        │ Conv2d                   │  147 K │
+│ 53  │ net.model.backbone.body.layer2.1.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 54  │ net.model.backbone.body.layer2.1.conv3        │ Conv2d                   │ 65.5 K │
+│ 55  │ net.model.backbone.body.layer2.1.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 56  │ net.model.backbone.body.layer2.1.relu         │ ReLU                     │      0 │
+│ 57  │ net.model.backbone.body.layer2.2              │ Bottleneck               │  278 K │
+│ 58  │ net.model.backbone.body.layer2.2.conv1        │ Conv2d                   │ 65.5 K │
+│ 59  │ net.model.backbone.body.layer2.2.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 60  │ net.model.backbone.body.layer2.2.conv2        │ Conv2d                   │  147 K │
+│ 61  │ net.model.backbone.body.layer2.2.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 62  │ net.model.backbone.body.layer2.2.conv3        │ Conv2d                   │ 65.5 K │
+│ 63  │ net.model.backbone.body.layer2.2.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 64  │ net.model.backbone.body.layer2.2.relu         │ ReLU                     │      0 │
+│ 65  │ net.model.backbone.body.layer2.3              │ Bottleneck               │  278 K │
+│ 66  │ net.model.backbone.body.layer2.3.conv1        │ Conv2d                   │ 65.5 K │
+│ 67  │ net.model.backbone.body.layer2.3.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 68  │ net.model.backbone.body.layer2.3.conv2        │ Conv2d                   │  147 K │
+│ 69  │ net.model.backbone.body.layer2.3.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 70  │ net.model.backbone.body.layer2.3.conv3        │ Conv2d                   │ 65.5 K │
+│ 71  │ net.model.backbone.body.layer2.3.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 72  │ net.model.backbone.body.layer2.3.relu         │ ReLU                     │      0 │
+│ 73  │ net.model.backbone.body.layer3                │ Sequential               │  7.1 M │
+│ 74  │ net.model.backbone.body.layer3.0              │ Bottleneck               │  1.5 M │
+│ 75  │ net.model.backbone.body.layer3.0.conv1        │ Conv2d                   │  131 K │
+│ 76  │ net.model.backbone.body.layer3.0.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 77  │ net.model.backbone.body.layer3.0.conv2        │ Conv2d                   │  589 K │
+│ 78  │ net.model.backbone.body.layer3.0.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 79  │ net.model.backbone.body.layer3.0.conv3        │ Conv2d                   │  262 K │
+│ 80  │ net.model.backbone.body.layer3.0.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 81  │ net.model.backbone.body.layer3.0.relu         │ ReLU                     │      0 │
+│ 82  │ net.model.backbone.body.layer3.0.downsample   │ Sequential               │  524 K │
+│ 83  │ net.model.backbone.body.layer3.0.downsample.0 │ Conv2d                   │  524 K │
+│ 84  │ net.model.backbone.body.layer3.0.downsample.1 │ FrozenBatchNorm2d        │      0 │
+│ 85  │ net.model.backbone.body.layer3.1              │ Bottleneck               │  1.1 M │
+│ 86  │ net.model.backbone.body.layer3.1.conv1        │ Conv2d                   │  262 K │
+│ 87  │ net.model.backbone.body.layer3.1.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 88  │ net.model.backbone.body.layer3.1.conv2        │ Conv2d                   │  589 K │
+│ 89  │ net.model.backbone.body.layer3.1.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 90  │ net.model.backbone.body.layer3.1.conv3        │ Conv2d                   │  262 K │
+│ 91  │ net.model.backbone.body.layer3.1.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 92  │ net.model.backbone.body.layer3.1.relu         │ ReLU                     │      0 │
+│ 93  │ net.model.backbone.body.layer3.2              │ Bottleneck               │  1.1 M │
+│ 94  │ net.model.backbone.body.layer3.2.conv1        │ Conv2d                   │  262 K │
+│ 95  │ net.model.backbone.body.layer3.2.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 96  │ net.model.backbone.body.layer3.2.conv2        │ Conv2d                   │  589 K │
+│ 97  │ net.model.backbone.body.layer3.2.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 98  │ net.model.backbone.body.layer3.2.conv3        │ Conv2d                   │  262 K │
+│ 99  │ net.model.backbone.body.layer3.2.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 100 │ net.model.backbone.body.layer3.2.relu         │ ReLU                     │      0 │
+│ 101 │ net.model.backbone.body.layer3.3              │ Bottleneck               │  1.1 M │
+│ 102 │ net.model.backbone.body.layer3.3.conv1        │ Conv2d                   │  262 K │
+│ 103 │ net.model.backbone.body.layer3.3.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 104 │ net.model.backbone.body.layer3.3.conv2        │ Conv2d                   │  589 K │
+│ 105 │ net.model.backbone.body.layer3.3.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 106 │ net.model.backbone.body.layer3.3.conv3        │ Conv2d                   │  262 K │
+│ 107 │ net.model.backbone.body.layer3.3.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 108 │ net.model.backbone.body.layer3.3.relu         │ ReLU                     │      0 │
+│ 109 │ net.model.backbone.body.layer3.4              │ Bottleneck               │  1.1 M │
+│ 110 │ net.model.backbone.body.layer3.4.conv1        │ Conv2d                   │  262 K │
+│ 111 │ net.model.backbone.body.layer3.4.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 112 │ net.model.backbone.body.layer3.4.conv2        │ Conv2d                   │  589 K │
+│ 113 │ net.model.backbone.body.layer3.4.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 114 │ net.model.backbone.body.layer3.4.conv3        │ Conv2d                   │  262 K │
+│ 115 │ net.model.backbone.body.layer3.4.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 116 │ net.model.backbone.body.layer3.4.relu         │ ReLU                     │      0 │
+│ 117 │ net.model.backbone.body.layer3.5              │ Bottleneck               │  1.1 M │
+│ 118 │ net.model.backbone.body.layer3.5.conv1        │ Conv2d                   │  262 K │
+│ 119 │ net.model.backbone.body.layer3.5.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 120 │ net.model.backbone.body.layer3.5.conv2        │ Conv2d                   │  589 K │
+│ 121 │ net.model.backbone.body.layer3.5.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 122 │ net.model.backbone.body.layer3.5.conv3        │ Conv2d                   │  262 K │
+│ 123 │ net.model.backbone.body.layer3.5.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 124 │ net.model.backbone.body.layer3.5.relu         │ ReLU                     │      0 │
+│ 125 │ net.model.backbone.body.layer4                │ Sequential               │ 14.9 M │
+│ 126 │ net.model.backbone.body.layer4.0              │ Bottleneck               │  6.0 M │
+│ 127 │ net.model.backbone.body.layer4.0.conv1        │ Conv2d                   │  524 K │
+│ 128 │ net.model.backbone.body.layer4.0.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 129 │ net.model.backbone.body.layer4.0.conv2        │ Conv2d                   │  2.4 M │
+│ 130 │ net.model.backbone.body.layer4.0.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 131 │ net.model.backbone.body.layer4.0.conv3        │ Conv2d                   │  1.0 M │
+│ 132 │ net.model.backbone.body.layer4.0.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 133 │ net.model.backbone.body.layer4.0.relu         │ ReLU                     │      0 │
+│ 134 │ net.model.backbone.body.layer4.0.downsample   │ Sequential               │  2.1 M │
+│ 135 │ net.model.backbone.body.layer4.0.downsample.0 │ Conv2d                   │  2.1 M │
+│ 136 │ net.model.backbone.body.layer4.0.downsample.1 │ FrozenBatchNorm2d        │      0 │
+│ 137 │ net.model.backbone.body.layer4.1              │ Bottleneck               │  4.5 M │
+│ 138 │ net.model.backbone.body.layer4.1.conv1        │ Conv2d                   │  1.0 M │
+│ 139 │ net.model.backbone.body.layer4.1.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 140 │ net.model.backbone.body.layer4.1.conv2        │ Conv2d                   │  2.4 M │
+│ 141 │ net.model.backbone.body.layer4.1.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 142 │ net.model.backbone.body.layer4.1.conv3        │ Conv2d                   │  1.0 M │
+│ 143 │ net.model.backbone.body.layer4.1.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 144 │ net.model.backbone.body.layer4.1.relu         │ ReLU                     │      0 │
+│ 145 │ net.model.backbone.body.layer4.2              │ Bottleneck               │  4.5 M │
+│ 146 │ net.model.backbone.body.layer4.2.conv1        │ Conv2d                   │  1.0 M │
+│ 147 │ net.model.backbone.body.layer4.2.bn1          │ FrozenBatchNorm2d        │      0 │
+│ 148 │ net.model.backbone.body.layer4.2.conv2        │ Conv2d                   │  2.4 M │
+│ 149 │ net.model.backbone.body.layer4.2.bn2          │ FrozenBatchNorm2d        │      0 │
+│ 150 │ net.model.backbone.body.layer4.2.conv3        │ Conv2d                   │  1.0 M │
+│ 151 │ net.model.backbone.body.layer4.2.bn3          │ FrozenBatchNorm2d        │      0 │
+│ 152 │ net.model.backbone.body.layer4.2.relu         │ ReLU                     │      0 │
+│ 153 │ net.model.backbone.fpn                        │ FeaturePyramidNetwork    │  3.3 M │
+│ 154 │ net.model.backbone.fpn.inner_blocks           │ ModuleList               │  984 K │
+│ 155 │ net.model.backbone.fpn.inner_blocks.0         │ Conv2dNormActivation     │ 65.8 K │
+│ 156 │ net.model.backbone.fpn.inner_blocks.0.0       │ Conv2d                   │ 65.8 K │
+│ 157 │ net.model.backbone.fpn.inner_blocks.1         │ Conv2dNormActivation     │  131 K │
+│ 158 │ net.model.backbone.fpn.inner_blocks.1.0       │ Conv2d                   │  131 K │
+│ 159 │ net.model.backbone.fpn.inner_blocks.2         │ Conv2dNormActivation     │  262 K │
+│ 160 │ net.model.backbone.fpn.inner_blocks.2.0       │ Conv2d                   │  262 K │
+│ 161 │ net.model.backbone.fpn.inner_blocks.3         │ Conv2dNormActivation     │  524 K │
+│ 162 │ net.model.backbone.fpn.inner_blocks.3.0       │ Conv2d                   │  524 K │
+│ 163 │ net.model.backbone.fpn.layer_blocks           │ ModuleList               │  2.4 M │
+│ 164 │ net.model.backbone.fpn.layer_blocks.0         │ Conv2dNormActivation     │  590 K │
+│ 165 │ net.model.backbone.fpn.layer_blocks.0.0       │ Conv2d                   │  590 K │
+│ 166 │ net.model.backbone.fpn.layer_blocks.1         │ Conv2dNormActivation     │  590 K │
+│ 167 │ net.model.backbone.fpn.layer_blocks.1.0       │ Conv2d                   │  590 K │
+│ 168 │ net.model.backbone.fpn.layer_blocks.2         │ Conv2dNormActivation     │  590 K │
+│ 169 │ net.model.backbone.fpn.layer_blocks.2.0       │ Conv2d                   │  590 K │
+│ 170 │ net.model.backbone.fpn.layer_blocks.3         │ Conv2dNormActivation     │  590 K │
+│ 171 │ net.model.backbone.fpn.layer_blocks.3.0       │ Conv2d                   │  590 K │
+│ 172 │ net.model.backbone.fpn.extra_blocks           │ LastLevelMaxPool         │      0 │
+│ 173 │ net.model.rpn                                 │ RegionProposalNetwork    │  593 K │
+│ 174 │ net.model.rpn.anchor_generator                │ AnchorGenerator          │      0 │
+│ 175 │ net.model.rpn.head                            │ RPNHead                  │  593 K │
+│ 176 │ net.model.rpn.head.conv                       │ Sequential               │  590 K │
+│ 177 │ net.model.rpn.head.conv.0                     │ Conv2dNormActivation     │  590 K │
+│ 178 │ net.model.rpn.head.conv.0.0                   │ Conv2d                   │  590 K │
+│ 179 │ net.model.rpn.head.conv.0.1                   │ ReLU                     │      0 │
+│ 180 │ net.model.rpn.head.cls_logits                 │ Conv2d                   │    771 │
+│ 181 │ net.model.rpn.head.bbox_pred                  │ Conv2d                   │  3.1 K │
+│ 182 │ net.model.roi_heads                           │ RoIHeads                 │ 13.9 M │
+│ 183 │ net.model.roi_heads.box_roi_pool              │ MultiScaleRoIAlign       │      0 │
+│ 184 │ net.model.roi_heads.box_head                  │ TwoMLPHead               │ 13.9 M │
+│ 185 │ net.model.roi_heads.box_head.fc6              │ Linear                   │ 12.8 M │
+│ 186 │ net.model.roi_heads.box_head.fc7              │ Linear                   │  1.0 M │
+│ 187 │ net.model.roi_heads.box_predictor             │ FastRCNNPredictor        │ 10.2 K │
+│ 188 │ net.model.roi_heads.box_predictor.cls_score   │ Linear                   │  2.0 K │
+│ 189 │ net.model.roi_heads.box_predictor.bbox_pred   │ Linear                   │  8.2 K │
+└─────┴───────────────────────────────────────────────┴──────────────────────────┴────────┘
+Trainable params: 41.1 M                                                                                                                                                                                 
+Non-trainable params: 222 K                                                                                                                                                                              
+Total params: 41.3 M                                                                                                                                                                                     
+Total estimated model params size (MB): 165                                                                                                                                                              
+At validation epoch 0
+'Total loss = ' 1.6024794578552246 'Loss box = ' 0.6547712087631226 'Loss objectness = ' 0.3543730676174164 'Loss rpn box reg = ' 0.014962203800678253 'Loss classifier = ' 0.5783728957176208 
+[[36m2023-04-25 12:43:18,167[0m][[34mtorch.nn.parallel.distributed[0m][[32mINFO[0m] - Reducer buckets have been rebuilt in this iteration.[0m
+At validation epoch 0
+'Total loss = ' 1.739322543144226 'Loss box = ' 0.7315844297409058 'Loss objectness = ' 0.401164710521698 'Loss rpn box reg = ' 0.02014869451522827 'Loss classifier = ' 0.586424708366394 
+[[36m2023-04-25 12:43:18,192[0m][[34mtorch.nn.parallel.distributed[0m][[32mINFO[0m] - Reducer buckets have been rebuilt in this iteration.[0m
+At validation epoch 0
+'Total loss = ' 1.6705111265182495 'Loss box = ' 0.7339760065078735 'Loss objectness = ' 0.32080399990081787 'Loss rpn box reg = ' 0.016351092606782913 'Loss classifier = ' 0.5993800163269043 
+[[36m2023-04-25 12:43:18,290[0m][[34mtorch.nn.parallel.distributed[0m][[32mINFO[0m] - Reducer buckets have been rebuilt in this iteration.[0m
+At validation epoch 0
+'Total loss = ' 1.5105417966842651 'Loss box = ' 0.6184829473495483 'Loss objectness = ' 0.29817354679107666 'Loss rpn box reg = ' 0.015284438617527485 'Loss classifier = ' 0.5786008834838867 
+[[36m2023-04-25 12:43:18,290[0m][[34mtorch.nn.parallel.distributed[0m][[32mINFO[0m] - Reducer buckets have been rebuilt in this iteration.[0m

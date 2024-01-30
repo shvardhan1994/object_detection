@@ -1,0 +1,60 @@
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py", line 26, in <module>
+    main()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py", line 22, in main
+    return train(config)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/training_pipeline.py", line 85, in train
+    trainer.fit(model=model, datamodule=datamodule)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 520, in fit
+    call._call_and_handle_interrupt(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 559, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 935, in _run
+    results = self._run_stage()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 976, in _run_stage
+    self._run_sanity_check()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1005, in _run_sanity_check
+    val_loop.run()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/utilities.py", line 177, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 98, in run
+    self.setup_data()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 173, in setup_data
+    length = len(dl) if has_len_all_ranks(dl, trainer.strategy, allow_zero_length) else float("inf")
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/utilities/data.py", line 102, in has_len_all_ranks
+    if total_length == 0:
+RuntimeError: CUDA error: no kernel image is available for execution on the device
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.

@@ -1,0 +1,38 @@
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py", line 26, in <module>
+    main()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py", line 15, in main
+    from object_detection import utils
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/utils/__init__.py", line 6, in <module>
+    import rich.syntax
+ModuleNotFoundError: No module named 'rich'

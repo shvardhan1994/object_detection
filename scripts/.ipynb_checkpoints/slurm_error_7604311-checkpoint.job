@@ -1,0 +1,44 @@
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[W socket.cpp:426] [c10d] The server socket cannot be initialized on [::]:58259 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:58259 (errno: 97 - Address family not supported by protocol).
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:58259 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:58259 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:58259 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:58259 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:58259 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:58259 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:58259 (errno: 97 - Address family not supported by protocol).

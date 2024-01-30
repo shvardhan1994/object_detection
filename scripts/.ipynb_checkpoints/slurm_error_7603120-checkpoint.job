@@ -1,0 +1,254 @@
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+environment: line 17: /p/software/juwels/lmod/8.7.12/libexec/lmod: No such file or directory
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[W socket.cpp:426] [c10d] The server socket cannot be initialized on [::]:48971 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:48971 (errno: 97 - Address family not supported by protocol).
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py:10: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../configs/", config_name="train.yaml")
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:48971 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:48971 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:48971 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:48971 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:48971 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:48971 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:601] [c10d] The client socket cannot be initialized to connect to [localhost.localdomain]:48971 (errno: 97 - Address family not supported by protocol).
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py", line 26, in <module>
+    main()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py", line 22, in main
+    return train(config)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/training_pipeline.py", line 85, in train
+    trainer.fit(model=model, datamodule=datamodule)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 520, in fit
+    call._call_and_handle_interrupt(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 92, in launch
+    return function(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 559, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 935, in _run
+    results = self._run_stage()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 978, in _run_stage
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py", line 26, in <module>
+    self.fit_loop.run()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/fit_loop.py", line 201, in run
+    main()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/scripts/train.py", line 22, in main
+    return train(config)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/training_pipeline.py", line 85, in train
+    trainer.fit(model=model, datamodule=datamodule)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 520, in fit
+    call._call_and_handle_interrupt(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/strategies/launchers/subprocess_script.py", line 92, in launch
+    return function(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 559, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 935, in _run
+    results = self._run_stage()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 978, in _run_stage
+    self.fit_loop.run()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/fit_loop.py", line 201, in run
+    self.advance()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/fit_loop.py", line 354, in advance
+    self.advance()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/fit_loop.py", line 354, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 133, in run
+    self.epoch_loop.run(self._data_fetcher)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 133, in run
+    self.advance(data_fetcher)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 218, in advance
+    self.advance(data_fetcher)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 218, in advance
+    batch_output = self.automatic_optimization.run(trainer.optimizers[0], kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 185, in run
+    batch_output = self.automatic_optimization.run(trainer.optimizers[0], kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 185, in run
+    self._optimizer_step(kwargs.get("batch_idx", 0), closure)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 261, in _optimizer_step
+    self._optimizer_step(kwargs.get("batch_idx", 0), closure)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 261, in _optimizer_step
+    call._call_lightning_module_hook(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 142, in _call_lightning_module_hook
+    call._call_lightning_module_hook(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 142, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/core/module.py", line 1265, in optimizer_step
+    output = fn(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/core/module.py", line 1265, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/core/optimizer.py", line 158, in step
+    optimizer.step(closure=optimizer_closure)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/core/optimizer.py", line 158, in step
+    step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/strategies/ddp.py", line 257, in optimizer_step
+    step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/strategies/ddp.py", line 257, in optimizer_step
+    optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 224, in optimizer_step
+    optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 224, in optimizer_step
+    return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 114, in optimizer_step
+    return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 114, in optimizer_step
+    return optimizer.step(closure=closure, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/optim/optimizer.py", line 140, in wrapper
+    return optimizer.step(closure=closure, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/optim/optimizer.py", line 140, in wrapper
+    out = func(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/optim/optimizer.py", line 23, in _use_grad
+    out = func(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/optim/optimizer.py", line 23, in _use_grad
+    ret = func(self, *args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/optim/adam.py", line 183, in step
+    ret = func(self, *args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/optim/adam.py", line 183, in step
+    loss = closure()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 101, in _wrap_closure
+    closure_result = closure()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 140, in __call__
+    loss = closure()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 101, in _wrap_closure
+    self._result = self.closure(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 126, in closure
+    step_output = self._step_fn()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 308, in _training_step
+    closure_result = closure()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 140, in __call__
+    training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 288, in _call_strategy_hook
+    self._result = self.closure(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 126, in closure
+    output = fn(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/strategies/ddp.py", line 329, in training_step
+    step_output = self._step_fn()
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 308, in _training_step
+    return self.model(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 288, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/strategies/ddp.py", line 329, in training_step
+    return self.model(*args, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1040, in forward
+    return forward_call(*input, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1040, in forward
+    output = self._run_ddp_forward(*inputs, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1000, in _run_ddp_forward
+    output = self._run_ddp_forward(*inputs, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1000, in _run_ddp_forward
+    return module_to_run(*inputs[0], **kwargs[0])
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return module_to_run(*inputs[0], **kwargs[0])
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/overrides/base.py", line 90, in forward
+    return forward_call(*input, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/pytorch_lightning/overrides/base.py", line 90, in forward
+    output = self._forward_module.training_step(*inputs, **kwargs)
+    output = self._forward_module.training_step(*inputs, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/models/frcnn_module.py", line 55, in training_step
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/models/frcnn_module.py", line 55, in training_step
+    loss, loss_box_reg, loss_objectness, loss_rpn_box_reg, loss_classifier = self.step(batch)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/models/frcnn_module.py", line 44, in step
+    loss, loss_box_reg, loss_objectness, loss_rpn_box_reg, loss_classifier = self.step(batch)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/models/frcnn_module.py", line 44, in step
+    loss_dict = self.net(x=(images, targets))
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    loss_dict = self.net(x=(images, targets))
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/models/components/frcnn.py", line 27, in forward
+    return forward_call(*input, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/src/object_detection/models/components/frcnn.py", line 27, in forward
+    if self.model.training: return self.model(x[0], x[1])    
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    if self.model.training: return self.model(x[0], x[1])    
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torchvision/models/detection/generalized_rcnn.py", line 67, in forward
+    return forward_call(*input, **kwargs)
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torchvision/models/detection/generalized_rcnn.py", line 67, in forward
+    torch._assert(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/__init__.py", line 827, in _assert
+    torch._assert(
+  File "/p/project/hai_hmgu/workspace/harsha/ObjectDetection/sc_venv_template/venv/lib/python3.9/site-packages/torch/__init__.py", line 827, in _assert
+    assert condition, message
+AssertionError: Expected target boxes to be a tensor of shape [N, 4], got torch.Size([0]).
+    assert condition, message
+AssertionError: Expected target boxes to be a tensor of shape [N, 4], got torch.Size([0]).
