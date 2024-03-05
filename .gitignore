@@ -2,4 +2,4 @@ logs/
 data/
 predictions/
 metrics/
-.ipynb_checkpoints
+.ipynb_checkpoints/
