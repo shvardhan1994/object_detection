@@ -12,7 +12,7 @@
 </div>
 
 # Description
-This is a custom pipeline dedicated to solving object detection problems and is derived from Quicksetup-ai, a flexible template as a quick setup for deep learning projects in research. The pipeline comes with preloaded Faster RCNN architecture and standard computer vision modules. 
+This is a custom pipeline dedicated to solving object detection problems and is derived from [Quicksetup-ai](https://quicksetup-ai.readthedocs.io/en/latest/) which is based on [lightning-hydra](https://github.com/ashleve/lightning-hydra-template), a flexible template as a quick setup for deep learning projects in research. The pipeline comes with preloaded Faster RCNN architecture and can be easily extended by adding other SOTA architectures in Computer vision. 
 
 # Quickstart
 
@@ -22,7 +22,7 @@ This is a custom pipeline dedicated to solving object detection problems and is 
 
 ```bash
 # clone project
-git clone https://github.com/HelmholtzAI-Consultants-Munich/object_detection.git
+git clone https://github.com/shvardhan1994/object_detection.git
 cd object_detection
 
 # [OPTIONAL] create conda environment
@@ -35,36 +35,13 @@ conda activate venv
 pip install -e .
 ```
 
-#### 1.2 Installing dependencies on JUWELS and creating a virtual environment.
-
-```bash
-# clone project
-git clone https://github.com/HelmholtzAI-Consultants-Munich/object_detection.git
-cd object_detection
-
-# [OPTIONAL] create virtual environment
-git clone https://gitlab.jsc.fz-juelich.de/kesselheim1/sc_venv_template.git
-
-# Edit `config.sh` to change name and location of the venv if required.
-# Edit `modules.sh` to change the modules loaded prior to the creation of the venv.
-# Copy the lines between 51 and 93 of `setup.cfg` to `sc_venv_template/requirements.txt` and comment the same lines between 51 and 93 in the setup.cfg file.
-
-# Create the environment with 
-bash setup.sh
-
-# Create a Kernel to use Jupyter notebooks on JUWELS
-bash create_kernel.sh
-
-# Activate the virtual environment with 
-source sc_venv_template/activate.sh
-
-# Once the environment is created, execute 
-pip install -e .
-
-```
 ## Run the organoid detection example
 
-**Note**: This pipeline performs object detection on intestinal organoid images. The dataset is split into train, validation and test set. The dataset has to be saved in object_detection/data/orgaquant folder. The data folder should follow below structure.
+**Note**: This pipeline performs object detection on intestinal organoid images. The dataset is split into train, validation and test set. The dataset has to be saved in object_detection/data/orgaquant folder. The data folder should follow below structure. 
+
+This object detection template is customely designed to perform on the sample dataset acquired from the below research,
+`Kassis, Timothy, et al. "OrgaQuant: human intestinal organoid localization and quantification using deep convolutional neural networks." Scientific reports 9.1 (2019): 12479.`
+The opensource dataset can be download from [here](https://osf.io/etz8r).
 ```
 ├── object_detection                             
 │   ├── data                               
@@ -89,11 +66,6 @@ python scripts/train.py
 
 ```
 
-Or, if you want to submit the training job to a submit (resp. interactive) cluster node via slurm, run:
-```
-sbatch job_submission.sbatch
-# or sbatch job_submission_interactive.sbatch
-```
 By default, the training pipeline also runs the testing pipeline on the testset based on the best model checkpoint during training.
 
 If you want to run just testing pipeline exclusively, make sure you give the correct checkpoint path in `configs/test.yaml` and then simply run:
@@ -119,8 +91,3 @@ python notebooks/inference.py
 > ```
 > * When evaluating (running `test.py`), make sure you give the correct checkpoint path in `configs/test.yaml`
 
-
-
-### References
-The sample dataset is acquired from the below research,
-`Kassis, Timothy, et al. "OrgaQuant: human intestinal organoid localization and quantification using deep convolutional neural networks." Scientific reports 9.1 (2019): 12479.`

@@ -4,17 +4,20 @@ import pandas as pd
 from object_detection.utils import utils_frcnn
 import os
 
-###################################################################################################
-# Specify the base path and path to model predictions
 
-base_path = "/p/project/hai_hmgu/workspace/harsha/object_detection/data/orgaquant"
+# All the paths mentioned in this script are for reference. Should be modified accordingly.
+
+###################################################################################################
+# Specify the base path and path to model predictions 
+
+base_path = "object_detection/data/orgaquant"
 pred_json = f"{base_path}/predictions/2024-01-30_14-57-02/model_predictions.json"
 
 ###################################################################################################
 
 # Get the predicted bboxes and load the ground truth bounding boxes for testset
 
-image_name,pred_bb,pred_scores = utils_frcnn.load_preds('/p/project/hai_hmgu/workspace/harsha/object_detection/data/predictions/2024-01-30_14-57-02/model_predictions.json')
+image_name,pred_bb,pred_scores = utils_frcnn.load_preds('object_detection/data/predictions/2024-01-30_14-57-02/model_predictions.json')
 test_df = pd.read_csv(f'{base_path}/test_labels.csv',sep = ',')
 gt_bb = []
 for img in image_name:
